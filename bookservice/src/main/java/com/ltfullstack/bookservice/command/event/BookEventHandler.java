@@ -24,12 +24,12 @@ public class BookEventHandler {
 
     @EventHandler
     public void on(BookUpdateEvent event) {
-        Optional<Book> book = bookRepository.findById(event.getId());
-        if (book.isPresent()) {
-            Book bookToUpdate = book.get();
-            BeanUtils.copyProperties(event, bookToUpdate);
-            bookRepository.save(bookToUpdate);
-        }
+        Optional<Book> otpBook = bookRepository.findById(event.getId());
+        otpBook.ifPresent(book -> {
+            BeanUtils.copyProperties(event, book);
+            bookRepository.save(book);
+        });
+
     }
 
     @EventHandler

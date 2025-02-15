@@ -7,10 +7,11 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableDiscoveryClient
+@ComponentScan({"com.ltfullstack.bookservice", "com.fullstack.commonservice"})
 public class BookserviceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(BookserviceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(BookserviceApplication.class, args);
+    }
 
 }
